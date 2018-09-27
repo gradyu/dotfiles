@@ -26,5 +26,19 @@
 # -------------------------------------------------------------------------------
 #
 
-warn "Homebrew setup..."
+function install_homebrew() {
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
+
+function check_and_install_homebrew() {
+    command -v brew > /dev/null 2>&1 || install_homebrew > /dev/null 2>&1 && brew doctor
+}
+
+function main() {
+    warn "Homebrew setup..."
+    check_and_install_homebrew
+}
+
+### Main setup script
+main
 
