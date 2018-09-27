@@ -60,36 +60,52 @@ function install_xcode_cli() {
     softwareupdate -i "$PROD";
 }
 
-### main script
-info "Checking Xcode command line"
-xcode-select -p &> /dev/null
-if [ $? -ne 0 ]; then
-    install_xcode_cli
-fi
-if [ $? -ne 0 ]; then
-    error "Xcode command Line install failed!"
-    exit 1
-fi
-success "Xcode command Line is OK"
+function check_and_install_xcode_cli() {
+    info "Checking Xcode command line"
+    xcode-select -p &> /dev/null
+    if [ $? -ne 0 ]; then
+        install_xcode_cli
+    fi
+    if [ $? -ne 0 ]; then
+        error "Xcode command Line install failed!"
+        exit 1
+    fi
+    success "Xcode command Line is OK"
+}
 
-### Call submodule script
-info "Call submodule setup script"
+function check_and_clone_setup_repository() {
+    info "Check and clone setup repository"
+    if [ ! -d $HOME/.setup ]; then
+        info "git clone mac-dev-setup repository!"
+        git clone https://github.com/gradyu/mac-dev-setup.git $HOME/.setup
+    fi
+}
 
-submodules=(
-    brew/setup.sh
-    nodejs/setup.sh
-    python/setup.sh
-    java/setup.sh
-    vagrant/setup.sh
-    docker/setup.sh
-    shell/setup.sh
-    editor/setup.sh
-)
+function call_submodules_setup() {
+    info "Call submodule setup script"
+    submodules=(
+        brew/setup.sh
+        nodejs/setup.sh
+        python/setup.sh
+        java/setup.sh
+        vagrant/setup.sh
+        docker/setup.sh
+        shell/setup.sh
+        editor/setup.sh
+    )
+    for module in ${submodules[@]}
+    do
+        source ${module}
+    done
+}
 
-for module in ${submodules[@]}
-do
-    source ${module}
-done
+function main() {
+    check_and_install_xcode_cli
+    check_and_clone_setup_repository
+    call_submodules_setup
+    success "mac development setup finished!!!"
+}
 
-success "mac development setup finished!!!"
+### Main script
+main
 
