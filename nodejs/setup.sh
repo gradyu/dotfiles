@@ -28,6 +28,50 @@
 # -------------------------------------------------------------------------------
 #
 
-warn "nodejs setup..."
+function install_nvm() {
+    info "install nvm..."
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh
+}
 
+function export_nvm_command() {
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+}
 
+function check_and_install_nvm() {
+    if [ ! -d $HOME/.nvm ]; then
+        install_nvm > /dev/null 2>&1
+    fi
+    command -v nvm > /dev/null 2>&1 || export_nvm_command
+    success "nvm is OK"
+}
+
+function install_lts_node() {
+    command -v node > /dev/null 2>&1 || nvm install --lts && nvm ls node
+}
+
+function install_cnpm() {
+    info "install cnpm..."
+    npm install -g cnpm --registry=https://registry.npm.taobao.org > /dev/null 2>&1
+}
+
+function install_hexo_cli {
+    info "install hexo cli..."
+    cnpm install -g hexo_cli > /dev/null 2>&1
+}
+
+function install_global_packages() {
+    command -v cnpm > /dev/null 2>&1 || install_cnpm
+    command -v hexo > /dev/null 2>&1 || install_hexo_cli
+    success "node global packages is OK"
+}
+
+function main() {
+    warn "nodejs setup..."
+    check_and_install_nvm
+    install_lts_node
+    install_global_packages
+}
+
+### Main setup script
+main
