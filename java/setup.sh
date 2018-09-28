@@ -26,5 +26,12 @@
 # -------------------------------------------------------------------------------
 #
 
-warn "java setup..."
+function main() {
+    warn "java setup..."
+    brew update
+    brew tap caskroom/versions
+    brew cask install java8
+}
 
+### Main script
+main
