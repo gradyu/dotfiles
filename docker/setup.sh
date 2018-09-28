@@ -26,5 +26,14 @@
 # -------------------------------------------------------------------------------
 #
 
-warn "docker setup..."
+
+function main() {
+    warn "docker setup..."
+    brew update
+    brew tap caskroom/versions
+    brew cask install docker
+}
+
+### Main script
+main
 
