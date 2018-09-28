@@ -27,5 +27,32 @@
 # -------------------------------------------------------------------------------
 #
 
-info "Setup pyenv development..."
+export PYENV_ROOT=$HOME/.pyenv
+
+function install_pyenv() {
+    info "install pyenv"
+    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash > /dev/null 2>&1
+}
+
+function export_pyenv_command() {
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+}
+
+function remove_plugins() {
+    rm -rf $PYENV_ROOT/plugins/pyenv-doctor > /dev/null 2>&1
+    rm -rf $PYENV_ROOT/plugins/pyenv-installer > /dev/null 2>&1
+    rm -rf $PYENV_ROOT/plugins/pyenv-which-ext > /dev/null 2>&1
+}
+
+function main() {
+    info "Setup pyenv development..."
+    install_pyenv
+    export_pyenv_command
+    remove_plugins
+}
+
+### Main script
+main
 

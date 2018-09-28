@@ -29,6 +29,8 @@
 #
 ### Check and install Xcode cli tool
 
+export SETUP_ROOT_DIR=$HOME/.setup
+
 ### color echo
 ### See https://github.com/PeterDaveHello/ColorEchoForShell/blob/master/dist/ColorEcho.bash)
 function info() {
@@ -75,10 +77,11 @@ function check_and_install_xcode_cli() {
 
 function check_and_clone_setup_repository() {
     info "Check and clone setup repository"
-    if [ ! -d $HOME/.setup ]; then
+    if [ ! -d $SETUP_ROOT_DIR ]; then
         info "git clone mac-dev-setup repository!"
-        git clone https://github.com/gradyu/mac-dev-setup.git $HOME/.setup
+        git clone https://github.com/gradyu/mac-dev-setup.git $SETUP_ROOT_DIR
     fi
+    cd $SETUP_ROOT_DIR
 }
 
 function call_submodules_setup() {

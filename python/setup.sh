@@ -27,6 +27,38 @@
 # -------------------------------------------------------------------------------
 #
 
-warn "python setup..."
+export PYTHON_VERSION=3.6.5
 
+function check_and_setup_pyenv() {
+    command -v pyenv > /dev/null 2>&1 || source $SETUP_ROOT_DIR/python/pyenv/setup.sh
+}
 
+function install_python3() {
+    command -v pyenv > /dev/null 2>&1 && echo N | pyenv install $PYTHON_VERSION \
+        && pyenv global $PYTHON_VERSION && pyenv rehash
+}
+
+function config_pip() {
+    if [ ! -d $HOME/.config ]; then
+        mkdir -p $HOME/.config
+    fi
+    if [ -f $HOME/.config/pip/pip.conf ]; then
+        ln -sfn $SETUP_ROOT_DIR/python/pip $HOME/.config/pip
+    fi
+}
+
+function install_pipenv() {
+    command -v pipenv > /dev/null 2>&1 || (command -v pip > /dev/null 2>&1 \
+        && pip install --user pipenv)
+}
+
+function main() {
+    warn "python setup..."
+    check_and_setup_pyenv
+    install_python3
+    config_pip
+    install_pipenv
+}
+
+### Main script
+main
