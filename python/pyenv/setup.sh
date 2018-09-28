@@ -27,7 +27,7 @@
 # -------------------------------------------------------------------------------
 #
 
-export PYENV_ROOT=$HOME/.pyenv
+PYENV_ROOT=$HOME/.pyenv
 
 function install_pyenv() {
     info "install pyenv"

@@ -28,4 +28,42 @@
 # -------------------------------------------------------------------------------
 #
 
-warn "vagrant setup..."
+VAGRANT_WORK_DIR=$HOME/Documents/vagrant
+
+function brew_update_tap() {
+    brew update
+    brew tap caskroom/versions
+}
+
+function install_virtualbox() {
+    brew cask install virtualbox
+    brew cask install virtualbox-extension-pack
+}
+
+function install_vagrant_and_plugins() {
+    brew cask install vagrant
+    vagrant plugin install vagrant-vbguest
+    vagrant plugin install vagrant-hostmanager
+}
+
+function install_vbox_and_vagrant {
+    command -v VirtualBox > /dev/null 2>&1 || install_virtualbox
+    command -v vagrant > /dev/null 2>&1 || install_vagrant_and_plugins
+}
+
+function create_vagrant_env() {
+    if [ ! -d $VAGRANT_WORK_DIR ]; then
+        info "create vagrant environment"
+        mkdir -p $VAGRANT_WORK_DIR
+        ln -sfn $SETUP_ROOT_DIR/vagrant/Vagrantfile $VAGRANT_WORK_DIR/Vagrantfile
+    fi
+}
+
+function main() {
+    warn "vagrant setup..."
+    install_vbox_and_vagrant
+    create_vagrant_env
+}
+
+### Main script
+main

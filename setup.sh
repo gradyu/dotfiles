@@ -90,7 +90,7 @@ function call_submodules_setup() {
         brew/setup.sh
         nodejs/setup.sh
         python/setup.sh
-        java/setup.sh
+        # java/setup.sh
         vagrant/setup.sh
         docker/setup.sh
         shell/setup.sh
