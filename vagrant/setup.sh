@@ -30,25 +30,15 @@
 
 VAGRANT_WORK_DIR=$HOME/Documents/vagrant
 
-function brew_update_tap() {
-    brew update
-    brew tap caskroom/versions
-}
-
-function install_virtualbox() {
-    brew cask install virtualbox
-    brew cask install virtualbox-extension-pack
-}
-
-function install_vagrant_and_plugins() {
-    brew cask install vagrant
+function install_vagrant_plugins() {
     vagrant plugin install vagrant-vbguest
     vagrant plugin install vagrant-hostmanager
 }
 
 function install_vbox_and_vagrant {
-    command -v VirtualBox > /dev/null 2>&1 || install_virtualbox
-    command -v vagrant > /dev/null 2>&1 || install_vagrant_and_plugins
+    cd $SETUP_ROOT_DIR/vagrant
+    brew bundle check || brew bundle
+    cd $SETUP_ROOT_DIR
 }
 
 function create_vagrant_env() {
@@ -62,6 +52,7 @@ function create_vagrant_env() {
 function main() {
     warn "vagrant setup..."
     install_vbox_and_vagrant
+    install_vagrant_plugins
     create_vagrant_env
 }
 

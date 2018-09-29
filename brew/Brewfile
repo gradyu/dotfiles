@@ -1,0 +1,9 @@
+cask_args appdir: "/Applications"
+
+tap "homebrew/cask"
+
+brew "lua"
+
+cask "java8" unless system "/usr/libexec/java_home -v 1.8 --failfast"
+
+cask "docker"
