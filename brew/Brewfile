@@ -7,3 +7,8 @@ brew "lua"
 cask "java8" unless system "/usr/libexec/java_home -v 1.8 --failfast"
 
 cask "docker"
+cask "android-studio"
+cask "google-chrome"
+cask "iina"
+cask "synology-drive"
+cask "shadowsocksx-ng"
