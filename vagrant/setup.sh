@@ -31,8 +31,14 @@
 VAGRANT_WORK_DIR=$HOME/Documents/vagrant
 
 function install_vagrant_plugins() {
-    vagrant plugin install vagrant-vbguest
-    vagrant plugin install vagrant-hostmanager
+    vagrant plugin list | grep vbguest
+    if [ $? -ne 0 ]; then
+        vagrant plugin install vagrant-vbguest
+    fi
+    vagrant plugin list | grep hostmanager
+    if [ $? -ne 0 ]; then
+        vagrant plugin install vagrant-hostmanager
+    fi
 }
 
 function install_vbox_and_vagrant {
