@@ -22,11 +22,33 @@
 # limitations under the License.
 # -------------------------------------------------------------------------------
 # Version 1.0
-# 1. Install emacs for mac
-# 2. Install spacemacs
-# 3. Git clone persnal spacemacs configuration
+# 1. Install spacemacs
+# 2. Git clone persnal spacemacs configuration
 # -------------------------------------------------------------------------------
 #
 
 info "Setup emacs environment..."
+
+function install_spacemacs() {
+    EMACS_DIR=$HOME/.emacs.d
+    if [ ! -d $EMACS_DIR ]; then
+        git clone -b develop https://github.com/syl20bnr/spacemacs $EMACS_DIR
+    fi
+}
+
+function clone_spacemacs_config() {
+    CONFIG_DIR=$HOME/.spacemacs.d
+    if [ ! -d $CONFIG_DIR ]; then
+        git clone git@github.com:gradyu/spacemacs.d.git $CONFIG_DIR
+    fi
+}
+
+function main() {
+    info "Setup emacs environment..."
+    install_spacemacs
+    clone_spacemacs_config
+}
+
+### Main script
+main
 

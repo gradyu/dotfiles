@@ -1,0 +1,13 @@
+cask_args appdir: "/Applications"
+
+tap "railwaycat/emacsmacport"
+tap "caskroom/fonts"
+
+brew "ag"
+brew "aspell"
+brew "clang-format"
+brew "cscope"
+brew "fcitx-remote-for-osx"
+
+cask "emacs-mac-spacemacs-icon"
+cask "font-source-code-pro"

@@ -22,9 +22,28 @@
 # limitations under the License.
 # -------------------------------------------------------------------------------
 # Version 1.0
-# 1. Call the emacs setup
+# 1. Install emacs and packages
+# 2. Call the emacs setup
 # -------------------------------------------------------------------------------
 #
 
-warn "editor setup..."
+function install_editor_and_packages() {
+    cd $SETUP_ROOT_DIR/editor
+    brew bundle check || brew bundle
+    cd $SETUP_ROOT_DIR
+}
 
+function check_and_setup_emacs() {
+    if [ ! -d $HOME/.spacemacs.d ]; then
+        source $SETUP_ROOT_DIR/editor/emacs/setup.sh
+    fi
+}
+
+function main() {
+    warn "editor setup..."
+    install_editor_and_packages
+    check_and_setup_emacs
+}
+
+### Main script
+main

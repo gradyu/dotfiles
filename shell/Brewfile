@@ -3,5 +3,6 @@ cask_args appdir: "/Applications"
 tap "homebrew/cask"
 
 brew "tmux"
+brew "autojump"
 
 cask "iterm2"
