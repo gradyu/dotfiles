@@ -28,19 +28,19 @@
 # -------------------------------------------------------------------------------
 #
 
+export NVM_DIR="$HOME/.nvm"
+
 function install_nvm() {
-    info "install nvm..."
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh
 }
 
 function export_nvm_command() {
-    export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 }
 
 function check_and_install_nvm() {
-    if [ ! -d $HOME/.nvm ]; then
-        install_nvm > /dev/null 2>&1
+    if [ ! -d $NVM_DIR ]; then
+        install_nvm
     fi
     command -v nvm > /dev/null 2>&1 || export_nvm_command
     success "nvm is OK"

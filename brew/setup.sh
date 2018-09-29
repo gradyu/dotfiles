@@ -23,6 +23,7 @@
 # -------------------------------------------------------------------------------
 # Version 1.0
 # 1. Install Homebrew
+# 2. Install common dev tool
 # -------------------------------------------------------------------------------
 #
 
@@ -31,7 +32,7 @@ function install_homebrew() {
 }
 
 function check_and_install_homebrew() {
-    command -v brew > /dev/null 2>&1 || install_homebrew > /dev/null 2>&1 && brew doctor
+    command -v brew > /dev/null 2>&1 || install_homebrew && brew doctor
 }
 
 function main() {

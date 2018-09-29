@@ -39,11 +39,11 @@ function install_python3() {
 }
 
 function config_pip() {
-    if [ ! -d $HOME/.config ]; then
-        mkdir -p $HOME/.config
+    if [ ! -d $HOME/.config/pip ]; then
+        mkdir -p $HOME/.config/pip
     fi
     if [ -f $HOME/.config/pip/pip.conf ]; then
-        ln -sfn $SETUP_ROOT_DIR/python/pip $HOME/.config/pip
+        ln -sfn $SETUP_ROOT_DIR/python/pip/pip.conf $HOME/.config/pip/pip.conf
     fi
 }
 

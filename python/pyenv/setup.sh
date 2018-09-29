@@ -30,8 +30,7 @@
 PYENV_ROOT=$HOME/.pyenv
 
 function install_pyenv() {
-    info "install pyenv"
-    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash > /dev/null 2>&1
+    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash 
 }
 
 function export_pyenv_command() {
