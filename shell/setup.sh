@@ -26,7 +26,46 @@
 # -------------------------------------------------------------------------------
 #
 
-warn "shell environment setup..."
+ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
 
+function install_shell_app_and_packages() {
+    cd $SETUP_ROOT_DIR/shell
+    brew bundle check || brew bundle
+    cd $SETUP_ROOT_DIR
+}
 
+function install_ohmyzsh() {
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+}
 
+function install_zsh_plugins() {
+    git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
+    autoload -U compinit && compinit
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+}
+
+function check_and_install_ohmyzsh_env() {
+    if [ ! -d $HOME/.oh-my-zsh ]; then
+        install_ohmyzsh
+        install_zsh_plugins
+    fi
+}
+
+function link_config_files() {
+    ln -snf $SETUP_ROOT_DIR/shell/ohmyzsh/zshrc.zsh $HOME/.zshrc
+    if [ ! -d $ZSH_CUSTOM/android ]; then
+        ln -s $SETUP_ROOT_DIR/shell/ohmyzsh/android $ZSH_CUSTOM/android
+    fi
+    ln -snf $SETUP_ROOT_DIR/shell/ohmyzsh/my_configs.zsh $ZSH_CUSTOM/my_configs.zsh
+}
+
+function main() {
+    warn "shell environment setup..."
+    install_shell_app_and_packages
+    check_and_install_ohmyzsh_env
+    link_config_files
+}
+
+### Main script
+main

@@ -1,0 +1,7 @@
+cask_args appdir: "/Applications"
+
+tap "homebrew/cask"
+
+brew "tmux"
+
+cask "iterm2"

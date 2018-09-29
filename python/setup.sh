@@ -52,12 +52,19 @@ function install_pipenv() {
         && pip install --user pipenv)
 }
 
+function fixup_brew_doctor_warning() {
+    if [ ! -d $HOME/.local/bin ]; then
+        ln -snf $SETUP_ROOT_DIR/brew/bin/brew.sh $HOME/.local/bin/brew
+    fi
+}
+
 function main() {
     warn "python setup..."
     check_and_setup_pyenv
     install_python3
     config_pip
     install_pipenv
+    fixup_brew_doctor_warning
 }
 
 ### Main script
