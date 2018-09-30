@@ -51,19 +51,16 @@ function install_lts_node() {
 }
 
 function install_cnpm() {
-    info "install cnpm..."
-    npm install -g cnpm --registry=https://registry.npm.taobao.org > /dev/null 2>&1
+    npm install -g cnpm --registry=https://registry.npm.taobao.org
 }
 
 function install_hexo_cli {
-    info "install hexo cli..."
-    cnpm install -g hexo_cli > /dev/null 2>&1
+    cnpm install -g hexo_cli
 }
 
 function install_global_packages() {
     command -v cnpm > /dev/null 2>&1 || install_cnpm
     command -v hexo > /dev/null 2>&1 || install_hexo_cli
-    success "node global packages is OK"
 }
 
 function main() {

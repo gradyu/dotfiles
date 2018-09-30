@@ -51,7 +51,7 @@ function create_vagrant_env() {
     if [ ! -d $VAGRANT_WORK_DIR ]; then
         info "create vagrant environment"
         mkdir -p $VAGRANT_WORK_DIR
-        ln -sfn $SETUP_ROOT_DIR/vagrant/Vagrantfile $VAGRANT_WORK_DIR/Vagrantfile
+        ln -sf $SETUP_ROOT_DIR/vagrant/Vagrantfile $VAGRANT_WORK_DIR/Vagrantfile
     fi
 }
 

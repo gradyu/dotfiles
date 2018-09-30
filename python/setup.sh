@@ -42,9 +42,7 @@ function config_pip() {
     if [ ! -d $HOME/.config/pip ]; then
         mkdir -p $HOME/.config/pip
     fi
-    if [ -f $HOME/.config/pip/pip.conf ]; then
-        ln -sfn $SETUP_ROOT_DIR/python/pip/pip.conf $HOME/.config/pip/pip.conf
-    fi
+    ln -sfn $SETUP_ROOT_DIR/python/pip/pip.conf $HOME/.config/pip/pip.conf
 }
 
 function install_pipenv() {
@@ -53,7 +51,7 @@ function install_pipenv() {
 }
 
 function fixup_brew_doctor_warning() {
-    if [ ! -d $HOME/.local/bin ]; then
+    if [ -d $HOME/.local/bin ]; then
         ln -snf $SETUP_ROOT_DIR/brew/bin/brew.sh $HOME/.local/bin/brew
     fi
 }

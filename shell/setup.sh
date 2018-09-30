@@ -22,7 +22,10 @@
 # limitations under the License.
 # -------------------------------------------------------------------------------
 # Version 1.0
-# 1. Call submodule script
+# 1. Install iterm2
+# 2. Install common tool
+# 3. setup oh-my-zsh
+# 4. setup tmux
 # -------------------------------------------------------------------------------
 #
 
@@ -53,18 +56,27 @@ function check_and_install_ohmyzsh_env() {
 }
 
 function link_config_files() {
-    ln -snf $SETUP_ROOT_DIR/shell/ohmyzsh/zshrc.zsh $HOME/.zshrc
+    ln -sf .setup/shell/ohmyzsh/zshrc.zsh .zshrc
     if [ ! -d $ZSH_CUSTOM/android ]; then
         ln -s $SETUP_ROOT_DIR/shell/ohmyzsh/android $ZSH_CUSTOM/android
     fi
-    ln -snf $SETUP_ROOT_DIR/shell/ohmyzsh/my_configs.zsh $ZSH_CUSTOM/my_configs.zsh
+    ln -sf $SETUP_ROOT_DIR/shell/ohmyzsh/my_configs.zsh $ZSH_CUSTOM/my_configs.zsh
+}
+
+function setup_tmux() {
+    git clone https://github.com/gpakosz/.tmux.git
+    ln -sf .tmux/.tmux.conf
+    ln -sf .setup/shell/tmux/tmux.conf .tmux.conf.local
 }
 
 function main() {
     warn "shell environment setup..."
     install_shell_app_and_packages
     check_and_install_ohmyzsh_env
+    cd $HOME
     link_config_files
+    setup_tmux
+    cd $SETUP_ROOT_DIR
 }
 
 ### Main script

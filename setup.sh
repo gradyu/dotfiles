@@ -24,7 +24,8 @@
 # Version 1.0
 # 1. Color echo
 # 2. Check and install Xcode cli
-# 3. Call submodule
+# 3. Clone setup repository
+# 4. Call submodule
 # -------------------------------------------------------------------------------
 #
 ### Check and install Xcode cli tool

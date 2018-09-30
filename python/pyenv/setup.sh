@@ -30,7 +30,7 @@
 PYENV_ROOT=$HOME/.pyenv
 
 function install_pyenv() {
-    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash 
+    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 }
 
 function export_pyenv_command() {
@@ -40,9 +40,10 @@ function export_pyenv_command() {
 }
 
 function remove_plugins() {
-    rm -rf $PYENV_ROOT/plugins/pyenv-doctor > /dev/null 2>&1
-    rm -rf $PYENV_ROOT/plugins/pyenv-installer > /dev/null 2>&1
-    rm -rf $PYENV_ROOT/plugins/pyenv-which-ext > /dev/null 2>&1
+    plugins=(doctor installer which-ext)
+    for plugin in ${plugin[@]}; do
+        rm -rf $PYENV_ROOT/plugins/pyenv-$plugin > /dev/null 2>&1
+    done
 }
 
 function main() {
@@ -54,4 +55,3 @@ function main() {
 
 ### Main script
 main
-
