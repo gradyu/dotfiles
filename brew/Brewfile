@@ -1,6 +1,7 @@
 cask_args appdir: "/Applications"
 
 tap "homebrew/cask"
+tap "caskroom/versions"
 
 brew "lua"
 brew "docker-compose"
