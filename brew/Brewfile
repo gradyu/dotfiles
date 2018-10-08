@@ -14,7 +14,6 @@ cask "iina"
 cask "google-backup-and-sync"
 cask "shadowsocksx-ng"
 
-mas "Xcode", id: 497799835
 mas "iThoughtsX", id: 720669838
 mas "NeteaseMusic", id: 944848654
 mas "The Unarchiver", id: 425424353
