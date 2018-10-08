@@ -4,7 +4,6 @@ tap "homebrew/cask"
 tap "caskroom/versions"
 
 brew "lua"
-brew "docker-compose"
 
 cask "java8" unless system "/usr/libexec/java_home -v 1.8 --failfast"
 
