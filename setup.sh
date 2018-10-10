@@ -86,16 +86,17 @@ function check_and_clone_setup_repository() {
 function call_submodules_setup() {
     info "Call submodule setup script"
     submodules=(
-        brew/setup.sh
-        nodejs/setup.sh
-        python/setup.sh
-        vagrant/setup.sh
-        shell/setup.sh
-        editor/setup.sh
+        brew
+        nodejs
+        python
+        vagrant
+        shell
+        editor
+	tool
     )
     for module in ${submodules[@]}
     do
-        source $SETUP_ROOT_DIR/${module}
+        source $SETUP_ROOT_DIR/${module}/setup.sh
     done
 }
 

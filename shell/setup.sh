@@ -64,9 +64,11 @@ function link_config_files() {
 }
 
 function setup_tmux() {
-    git clone https://github.com/gpakosz/.tmux.git
-    ln -sf .tmux/.tmux.conf
-    ln -sf .setup/shell/tmux/tmux.conf .tmux.conf.local
+    if [ ! -d $HOME/.tmux ]; then
+        git clone https://github.com/gpakosz/.tmux.git
+        ln -sf .tmux/.tmux.conf
+        ln -sf .setup/shell/tmux/tmux.conf .tmux.conf.local
+    fi
 }
 
 function main() {

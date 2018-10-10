@@ -7,14 +7,7 @@ brew "lua"
 
 cask "java8" unless system "/usr/libexec/java_home -v 1.8 --failfast"
 
-cask "docker"
-cask "android-studio"
 cask "google-chrome"
 cask "iina"
 cask "google-backup-and-sync"
 cask "shadowsocksx-ng"
-
-mas "iThoughtsX", id: 720669838
-mas "NeteaseMusic", id: 944848654
-mas "The Unarchiver", id: 425424353
-mas "WeChat", id: 836500024

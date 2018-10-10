@@ -35,16 +35,9 @@ function check_and_install_homebrew() {
     command -v brew > /dev/null 2>&1 || install_homebrew && brew doctor
 }
 
-function brew_bundle_install() {
-    cd $SETUP_ROOT_DIR/brew
-    brew bundle check || brew bundle
-    cd $SETUP_ROOT_DIR
-}
-
 function main() {
     warn "Homebrew setup..."
     check_and_install_homebrew
-    brew_bundle_install
 }
 
 ### Main setup script

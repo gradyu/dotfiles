@@ -5,7 +5,7 @@
 # Revision:    1.0
 # Date:        2018-09-14
 # Author:      Grady <yhwei876@gmail.com>
-# Description: Setup nodejs development
+# Description: Install dev tools 
 # -------------------------------------------------------------------------------
 # Copyright (C) 2018 Grady
 
@@ -22,53 +22,21 @@
 # limitations under the License.
 # -------------------------------------------------------------------------------
 # Version 1.0
-# 1. Install nvm
-# 2. Install nodejs
-# 3. Install global package
+# 1. Install common dev app and tool
 # -------------------------------------------------------------------------------
 #
 
-export NVM_DIR="$HOME/.nvm"
-
-function install_nvm() {
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
-}
-
-function export_nvm_command() {
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-}
-
-function check_and_install_nvm() {
-    if [ ! -d $NVM_DIR ]; then
-        install_nvm
-    fi
-    command -v nvm > /dev/null 2>&1 || export_nvm_command
-    success "nvm is OK"
-}
-
-function install_lts_node() {
-    command -v node > /dev/null 2>&1 || nvm install 8.12.0 && nvm ls node
-}
-
-function install_cnpm() {
-    npm install -g cnpm --registry=https://registry.npm.taobao.org
-}
-
-function install_hexo_cli {
-    cnpm install -g hexo_cli
-}
-
-function install_global_packages() {
-    command -v cnpm > /dev/null 2>&1 || install_cnpm
-    command -v hexo > /dev/null 2>&1 || install_hexo_cli
+function brew_bundle_install() {
+    cd $SETUP_ROOT_DIR/tool
+    brew bundle check || brew bundle
+    cd $SETUP_ROOT_DIR
 }
 
 function main() {
-    warn "nodejs setup..."
-    check_and_install_nvm
-    install_lts_node
-    install_global_packages
+    warn "tool setup..."
+    brew_bundle_install
 }
 
 ### Main setup script
 main
+
