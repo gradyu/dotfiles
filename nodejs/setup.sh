@@ -54,13 +54,13 @@ function install_cnpm() {
     npm install -g cnpm --registry=https://registry.npm.taobao.org
 }
 
-function install_hexo_cli {
-    cnpm install -g hexo_cli
+function install_hexo {
+    cnpm install -g hexo
 }
 
 function install_global_packages() {
     command -v cnpm > /dev/null 2>&1 || install_cnpm
-    command -v hexo > /dev/null 2>&1 || install_hexo_cli
+    command -v hexo > /dev/null 2>&1 || install_hexo
 }
 
 function main() {

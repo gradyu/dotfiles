@@ -28,8 +28,6 @@
 # -------------------------------------------------------------------------------
 #
 
-info "Setup emacs environment..."
-
 function install_spacemacs() {
     EMACS_DIR=$HOME/.emacs.d
     if [ ! -d $EMACS_DIR ]; then
@@ -40,7 +38,7 @@ function install_spacemacs() {
 function clone_spacemacs_config() {
     CONFIG_DIR=$HOME/.spacemacs.d
     if [ ! -d $CONFIG_DIR ]; then
-        git clone https://github.com/gradyu/mac-dev-setup.git $CONFIG_DIR
+        git clone https://github.com/gradyu/spacemacs.d.git $CONFIG_DIR
     fi
 }
 
@@ -89,4 +87,3 @@ function main() {
 
 ### Main script
 main
-

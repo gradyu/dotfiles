@@ -92,7 +92,7 @@ function call_submodules_setup() {
         vagrant
         shell
         editor
-	tool
+        tool
     )
     for module in ${submodules[@]}
     do
@@ -110,4 +110,3 @@ function main() {
 main
 
 success "mac development setup finished!!!"
-
