@@ -77,12 +77,19 @@ function check_and_install_nodejs_deps() {
     command -v cnpm > /dev/null && install_nodejs_deps
 }
 
+function setup_emacs_client() {
+    if [ -d $HOME/.local/bin ]; then
+        ln -snf $SETUP_ROOT_DIR/editor/emacs/bin/emacsclient.sh $HOME/.local/bin/ec
+    fi
+}
+
 function main() {
     info "Setup emacs environment..."
     install_spacemacs
     clone_spacemacs_config
     check_and_install_python_deps
     check_and_install_nodejs_deps
+    setup_emacs_client
 }
 
 ### Main script
