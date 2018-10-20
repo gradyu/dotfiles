@@ -47,7 +47,7 @@ function check_and_install_nvm() {
 }
 
 function install_lts_node() {
-    command -v node > /dev/null 2>&1 || nvm install 8.12.0 && nvm ls node
+    command -v node > /dev/null 2>&1 || nvm install --lts && nvm ls node
 }
 
 function install_cnpm() {
