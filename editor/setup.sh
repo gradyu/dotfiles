@@ -25,6 +25,8 @@
 # 1. Install emacs and packages
 # 2. Call the emacs setup
 # -------------------------------------------------------------------------------
+# Version 1.1
+# 1. Install sapcevim and deps 
 #
 
 function install_editor_and_packages() {
@@ -39,10 +41,21 @@ function check_and_setup_emacs() {
     fi
 }
 
+function install_spacevim_and_deps() {
+    if [ ! -d $HOME/.SpaceVim ]; then
+        curl -sLf https://spacevim.org/install.sh | bash -s -- --install vim
+    fi
+    if [ ! -d $HOME/.SpaceVim.d ]; then
+        mkdir $HOME/.SpaceVim.d
+        ln -sf $SETUP_ROOT_DIR/editor/spacevim/init.toml $HOEM/.SpaceVim.d/init.toml
+    fi
+}
+
 function main() {
     warn "editor setup..."
     install_editor_and_packages
     check_and_setup_emacs
+    install_spacevim_and_deps
 }
 
 ### Main script
