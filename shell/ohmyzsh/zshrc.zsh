@@ -65,6 +65,7 @@ plugins=(
   brew
   osx
   pyenv
+  emacs
   vagrant
   autojump
   vi-mode

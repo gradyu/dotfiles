@@ -3,6 +3,7 @@ cask_args appdir: "/Applications"
 tap "railwaycat/emacsmacport"
 tap "caskroom/fonts"
 
+brew "neovim"
 brew "ag"
 brew "aspell"
 brew "clang-format"

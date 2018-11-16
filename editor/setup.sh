@@ -49,6 +49,8 @@ function install_spacevim_and_deps() {
         mkdir $HOME/.SpaceVim.d
         ln -sf $SETUP_ROOT_DIR/editor/spacevim/init.toml $HOEM/.SpaceVim.d/init.toml
     fi
+    command -v npm > /dev/null 2>&1 npm install -g neovim
+    command -v pip > /dev/null 2>&1 pip install --user neovim
 }
 
 function main() {
