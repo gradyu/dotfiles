@@ -43,7 +43,7 @@ function check_and_setup_emacs() {
 
 function install_spacevim_and_deps() {
     if [ ! -d $HOME/.SpaceVim ]; then
-        curl -sLf https://spacevim.org/install.sh | bash -s -- --install vim
+        curl -sLf https://spacevim.org/install.sh | bash -s -- --install neovim
     fi
     if [ ! -d $HOME/.SpaceVim.d ]; then
         mkdir $HOME/.SpaceVim.d
