@@ -3,6 +3,9 @@ export PATH=$HOME/.local/bin:$PATH
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 
+# brewhome bottle
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+
 # zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=15'
 

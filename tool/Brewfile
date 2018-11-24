@@ -5,6 +5,9 @@ tap "caskroom/versions"
 
 brew "lua"
 brew "carthage"
+brew "cmake"
+brew "redis"
+brew "mysql"
 
 cask "java8" unless system "/usr/libexec/java_home -v 1.8 --failfast"
 
