@@ -55,7 +55,7 @@ function install_cnpm() {
 }
 
 function install_hexo {
-    cnpm install -g hexo
+    cnpm install -g hexo-cli
 }
 
 function install_global_packages() {
