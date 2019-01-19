@@ -31,7 +31,7 @@
 export NVM_DIR="$HOME/.nvm"
 
 function install_nvm() {
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 }
 
 function export_nvm_command() {
@@ -54,13 +54,16 @@ function install_cnpm() {
     npm install -g cnpm --registry=https://registry.npm.taobao.org
 }
 
-function install_hexo {
-    cnpm install -g hexo-cli
-}
-
 function install_global_packages() {
     command -v cnpm > /dev/null 2>&1 || install_cnpm
-    command -v hexo > /dev/null 2>&1 || install_hexo
+    packages = [
+        hexo-cli
+        gulp
+    ]
+    for pkg in ${packages[@]}
+    do
+        command -v pkg > /dev/null 2>&1 || cnpm install -g pkg
+    done
 }
 
 function main() {
