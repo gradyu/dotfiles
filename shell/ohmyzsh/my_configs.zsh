@@ -19,6 +19,8 @@ alias npmgls="npm list -g --depth 0"
 alias npmclean="npm cache clean --force"
 
 alias pipls="pip list"
+alias pipin= "pip install --user"
+alias piprm="pip uninstall --user"
 alias pipout="pip list --outdated"
 
 alias eczsh="ec ~/.zshrc"
