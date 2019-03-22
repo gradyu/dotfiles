@@ -69,6 +69,8 @@ plugins=(
   vagrant
   autojump
   vi-mode
+  kubectl
+  minikube
   ## custom ##
   android
   zsh-completions
