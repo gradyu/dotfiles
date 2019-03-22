@@ -9,6 +9,8 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bott
 # zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=15'
 
+command -v minikube > /dev/null 2>&1 && eval $(minikube docker-env)
+
 #aliases
 alias cls=clear
 alias rmd="rm -rf"
@@ -22,5 +24,10 @@ alias pipls="pip list"
 alias pipin= "pip install --user"
 alias piprm="pip uninstall --user"
 alias pipout="pip list --outdated"
+
+alias kapod="kubectl get pod --all-namespaces"
+alias kasvc="kubectl get svc --all-namespaces"
+alias kpod="kubectl get pod"
+alias ksvc="kubectl get svc"
 
 alias eczsh="ec ~/.zshrc"
