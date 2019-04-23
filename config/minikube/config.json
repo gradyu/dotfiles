@@ -1,0 +1,8 @@
+{
+    "cpus": 4,
+    "dashboard": true,
+    "disk-size": "40GB",
+    "efk": true,
+    "ingress": true,
+    "memory": 4096
+}

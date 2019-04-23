@@ -70,7 +70,7 @@ plugins=(
   autojump
   vi-mode
   kubectl
-  minikube
+  # minikube
   ## custom ##
   android
   zsh-completions
