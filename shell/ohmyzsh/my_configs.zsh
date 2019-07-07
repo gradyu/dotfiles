@@ -26,6 +26,7 @@ alias piprm="pip uninstall --user"
 alias pipout="pip list --outdated"
 
 alias k8s="minikube start && eval $(minikube docker-env)"
+alias mdk="eval $(minikube docker-env)"
 alias kapod="kubectl get pod --all-namespaces -o wide"
 alias kasvc="kubectl get svc --all-namespaces -o wide"
 alias kpod="kubectl get pod"
