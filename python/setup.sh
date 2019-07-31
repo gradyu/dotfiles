@@ -27,7 +27,7 @@
 # -------------------------------------------------------------------------------
 #
 
-PYTHON_VERSION=3.6.5
+PYTHON_VERSION=3.7.4
 
 function check_and_setup_pyenv() {
     command -v pyenv > /dev/null 2>&1 || source $SETUP_ROOT_DIR/python/pyenv/setup.sh
