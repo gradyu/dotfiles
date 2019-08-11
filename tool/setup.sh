@@ -32,9 +32,19 @@ function brew_bundle_install() {
     cd $SETUP_ROOT_DIR
 }
 
+HAMMERSPOON_CONFIG_DIR = $HOME/.hammerspoon
+
+function clone_hammerspoon_config() {
+    if [ -d $HAMMERSPOON_CONFIG_DIR ] ; then
+        rm -rf $HAMMERSPOON_CONFIG_DIR
+    fi
+    git clone git@github.com:gradyu/hammerspoon.git $HAMMERSPOON_CONFIG_DIR
+}
+
 function main() {
     warn "tool setup..."
     brew_bundle_install
+    clone_hammerspoon_config
 }
 
 ### Main setup script

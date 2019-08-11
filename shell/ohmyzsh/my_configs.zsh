@@ -34,6 +34,8 @@ alias kpod="kubectl get pod"
 alias ksvc="kubectl get svc"
 
 # homebrew
+alias bclean="rm -rf $(brew --cache)"
+alias brmf="brew uninstall --ignore-dependencies"
 alias cask="brew cask"
 alias bins="brew install"
 alias brm="brew uninstall"
