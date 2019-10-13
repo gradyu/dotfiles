@@ -56,10 +56,10 @@ function install_cnpm() {
 
 function install_global_packages() {
     command -v cnpm > /dev/null 2>&1 || install_cnpm
-    packages = [
+    packages=(
         hexo-cli
         gulp
-    ]
+    )
     for pkg in ${packages[@]}
     do
         command -v pkg > /dev/null 2>&1 || cnpm install -g pkg
