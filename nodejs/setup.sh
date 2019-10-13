@@ -35,11 +35,12 @@ function install_nvm() {
 }
 
 function export_nvm_command() {
+    warn "export nvm command"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 }
 
 function check_and_install_nvm() {
-    command -v nvm > /dev/null 2>&1 || (install_nvm && export_nvm_command)
+    command -v nvm > /dev/null 2>&1 || install_nvm && export_nvm_command
     success "nvm is OK"
 }
 
