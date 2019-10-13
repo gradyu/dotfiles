@@ -42,7 +42,7 @@ function check_and_install_nvm() {
     if [ ! -d $NVM_DIR ]; then
         install_nvm
     fi
-    command -v nvm > /dev/null 2>&1 || export_nvm_command
+    command -v nvm > /dev/null 2>&1 || (install_nvm && export_nvm_command)
     success "nvm is OK"
 }
 
