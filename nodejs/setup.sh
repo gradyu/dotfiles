@@ -31,7 +31,7 @@
 export NVM_DIR="$HOME/.nvm"
 
 function install_nvm() {
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.0/install.sh | bash
 }
 
 function export_nvm_command() {
