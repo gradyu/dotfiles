@@ -57,8 +57,8 @@ function check_and_install_ohmyzsh_env() {
 
 function link_config_files() {
     ln -sf .setup/shell/ohmyzsh/zshrc.zsh .zshrc
-    if [ ! -d $ZSH_CUSTOM/android ]; then
-        ln -s $SETUP_ROOT_DIR/shell/ohmyzsh/android $ZSH_CUSTOM/android
+    if [ ! -d $ZSH_CUSTOM/plugins/android ]; then
+        ln -s $SETUP_ROOT_DIR/shell/ohmyzsh/android $ZSH_CUSTOM/plugins/android
     fi
     ln -sf $SETUP_ROOT_DIR/shell/ohmyzsh/my_configs.zsh $ZSH_CUSTOM/my_configs.zsh
 }
