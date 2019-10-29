@@ -72,6 +72,7 @@ plugins=(
   kubectl
   # minikube
   ## custom ##
+  go
   android
   zsh-completions
   zsh-syntax-highlighting
