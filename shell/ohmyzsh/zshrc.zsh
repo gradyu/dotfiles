@@ -69,7 +69,7 @@ plugins=(
   vagrant
   autojump
   vi-mode
-  kubectl
+  # kubectl
   # minikube
   ## custom ##
   go
