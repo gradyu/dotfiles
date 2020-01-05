@@ -19,27 +19,44 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "archlinux", primary: true do |archlinux|
     archlinux.vm.box = "archlinux/archlinux"
-    archlinux.vm.hostname = "archlinux-nox"
+    archlinux.vm.hostname = "archlinux"
     archlinux.vm.box_check_update = false
     archlinux.vm.network "private_network", ip: "192.168.99.100"
     archlinux.vm.synced_folder "../workspace/", "/vagrant"
-    archlinux.vm.provider "virtualbox" do |vb|
-      vb.name = "archlinux-nox"
-      vb.cpus = 2
-      vb.memory = 2048
-    end
     archlinux.vbguest.auto_update = false
+    archlinux.vm.provider "virtualbox" do |vb|
+      vb.gui = true
+      vb.name = "archlinux"
+      vb.cpus = 2
+      vb.memory = 4096
+    end
   end
+
+  # config.vm.define "archlinux-nox", autostart: false do |archlinux|
+  #   archlinux.vm.box = "archlinux/archlinux"
+  #   archlinux.vm.hostname = "archlinux-nox"
+  #   archlinux.vm.box_check_update = false
+  #   archlinux.vm.network "private_network", ip: "192.168.99.101"
+  #   archlinux.vm.synced_folder "../workspace/", "/vagrant"
+  #   archlinux.vbguest.auto_update = false
+  #   archlinux.vm.provider "virtualbox" do |vb|
+  #     vb.name = "archlinux-nox"
+  #     vb.cpus = 2
+  #     vb.memory = 2048
+  #   end
+  # end
 
   config.vm.define "centos", autostart: false do |centos|
     centos.vm.box = "centos/7"
     centos.vm.hostname = "centos"
     centos.vm.box_check_update = false
-    centos.vm.network "private_network", ip: "192.168.99.101"
+    centos.vm.network "private_network", ip: "192.168.99.102"
     centos.vm.synced_folder "../workspace/", "/vagrant"
     centos.vbguest.auto_update = false
     centos.vm.provider "virtualbox" do |vb|
       vb.name = "centos-nox"
+      vb.cpus = 2
+      vb.memory = 2048
     end
   end
 
@@ -47,11 +64,13 @@ Vagrant.configure("2") do |config|
     debian.vm.box = "debian/stretch64"
     debian.vm.hostname = "debian"
     debian.vm.box_check_update = false
-    debian.vm.network "private_network", ip: "192.168.99.102"
+    debian.vm.network "private_network", ip: "192.168.99.103"
     debian.vm.synced_folder "../workspace/", "/vagrant"
     debian.vbguest.auto_update = false
     debian.vm.provider "virtualbox" do |vb|
       vb.name = "debian-nox"
+      vb.cpus = 2
+      vb.memory = 2048
     end
   end
 
